@@ -135,6 +135,17 @@ function updateFootnotePanels() {
   });
 }
 
+// Close all footnotes when clicking the overlay
+const overlay = document.getElementById('footnote-overlay');
+if (overlay) {
+  overlay.addEventListener('click', function () {
+    // Close all open footnotes
+    while (openFootnoteStack.length > 0) {
+      hideFootnotePanel(openFootnoteStack[openFootnoteStack.length - 1]);
+    }
+  });
+}
+
 // Attach event listeners and classes for all footnote links
 footnotes.forEach(({ id }) => {
   const btnEls = document.querySelectorAll(`[data-footnote-link="${id}"]`);
