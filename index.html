@@ -251,14 +251,21 @@
           panel.style.width = '24rem';
           panel.style.maxWidth = '100%';
           panel.style.zIndex = 50 + i;
-          panel.style.height = '100vh';
+          panel.style.height = 'calc(100vh - ' + offset + 'px)';
           // Only the last (topmost) panel shows content
           const contentDiv = panel.querySelector('.footnote-content');
           if (contentDiv) {
-            contentDiv.style.display = (i === openFootnoteStack.length - 1) ? '' : 'none';
-            contentDiv.style.overflowY = (i === openFootnoteStack.length - 1) ? 'auto' : '';
-            contentDiv.style.flex = (i === openFootnoteStack.length - 1) ? '1 1 auto' : '';
-            contentDiv.style.maxHeight = (i === openFootnoteStack.length - 1) ? 'calc(100vh - ' + (offset + (header ? header.offsetHeight : 0)) + 'px)' : '';
+            if (i === openFootnoteStack.length - 1) {
+              contentDiv.style.display = '';
+              contentDiv.style.overflowY = 'auto';
+              contentDiv.style.flex = '1 1 auto';
+              contentDiv.style.maxHeight = '100%';
+            } else {
+              contentDiv.style.display = 'none';
+              contentDiv.style.overflowY = '';
+              contentDiv.style.flex = '';
+              contentDiv.style.maxHeight = '';
+            }
           }
           // Position panel below previous headers
           panel.style.top = offset + 'px';
