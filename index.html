@@ -1,133 +1,338 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>You Could Be Feeling Good All the Time</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: '#3a7ca5',
-              secondary: '#2a9d8f',
-              accent: '#e76f51',
-              light: '#f8f9fa',
-              dark: '#2b2d42'
-            },
-            fontFamily: {
-              heading: ['Montserrat', 'sans-serif'],
-              body: ['Open Sans', 'sans-serif']
-            }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You Could Be Feeling Good All the Time</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap"
+    rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3a7ca5',
+            secondary: '#2a9d8f',
+            accent: '#e76f51',
+            light: '#f8f9fa',
+            dark: '#2b2d42'
+          },
+          fontFamily: {
+            heading: ['Montserrat', 'sans-serif'],
+            body: ['Open Sans', 'sans-serif']
           }
         }
       }
-    </script>
-    <style>
-      /* Custom tooltip styles */
-      .tooltip {
-        position: relative;
-        display: inline-block;
-        cursor: pointer;
-      }
-      
-      .tooltip .tooltip-text {
-        visibility: hidden;
-        width: 200px;
-        background-color: rgba(43, 45, 66, 0.95);
-        color: #fff;
-        text-align: center;
-        border-radius: 6px;
-        padding: 8px;
-        position: absolute;
-        z-index: 1;
-        bottom: 125%;
-        left: 50%;
-        transform: translateX(-50%);
-        opacity: 0;
-        transition: opacity 0.3s;
-      }
-      
-      .tooltip .tooltip-text::after {
-        content: "";
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: rgba(43, 45, 66, 0.95) transparent transparent transparent;
-      }
-      
-      .tooltip:hover .tooltip-text {
-        visibility: visible;
-        opacity: 1;
-      }
-    </style>
+    }
+  </script>
+  <style>
+    /* Custom tooltip styles */
+    .tooltip {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .tooltip .tooltip-text {
+      visibility: hidden;
+      width: 200px;
+      background-color: rgba(43, 45, 66, 0.95);
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 8px;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .tooltip .tooltip-text::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: rgba(43, 45, 66, 0.95) transparent transparent transparent;
+    }
+
+    .tooltip:hover .tooltip-text {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .footnote-header {
+      /* Already using Tailwind classes for most styling, but add any custom tweaks here if needed */
+      /* Example: box-shadow or extra separation if desired */
+    }
+  </style>
 </head>
+
 <body class="bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center min-h-screen font-body">
-    <div class="text-center p-10 max-w-2xl bg-white rounded-xl shadow-xl transition-all duration-300 hover:shadow-2xl">
-        <h1 class="text-5xl font-extrabold text-primary mb-8 font-heading">You Could Be Feeling Good All the Time</h1>
-        <p class="text-2xl text-secondary mb-6">
-            Feeling good is a <strong>general sense of well-being</strong> – a mood, not an emotion.
-        </p>
-        <p class="text-3xl font-bold text-primary mb-6 font-heading">
-            Aim to <strong class="text-accent">FEEL GOOD</strong> each moment. Stay aware by asking:
-        </p>
-        <p class="text-3xl italic text-secondary mb-8 border-l-4 border-accent pl-4 mx-auto max-w-lg">
-            "How am I experiencing this moment of being alive?"
-        </p>
-        <p class="text-lg text-dark mb-6">
-            If you notice a dip, <em class="text-accent font-semibold">first 
-            <button id="footnoteBtn" class="border-b border-dotted border-accent text-accent font-semibold cursor-pointer focus:outline-none">get back</button>
-            to feeling good</em>. Then, within 30 minutes, suss out <em class="text-accent font-semibold">where, when, how, why <span class="text-dark">–</span> and what for</em> – the dip occurred to nip it in the bud next time.
-        </p>
-        <p class="text-lg text-secondary">
-            Explore more at <a href="http://www.actualfreedom.com.au/richard/articles/thismomentofbeingalive.htm" class="text-accent hover:underline font-semibold transition-colors duration-300">ActualFreedom.com.au</a>
-        </p>
+  <div class="text-center p-10 max-w-2xl bg-white rounded-xl shadow-xl transition-all duration-300 hover:shadow-2xl">
+    <h1 class="text-5xl font-extrabold text-primary mb-8 font-heading">You Could Be Feeling Good All the Time</h1>
+    <p class="text-2xl text-secondary mb-6">
+      Feeling good is a <strong>general sense of well-being</strong> – a mood, not an emotion.
+    </p>
+    <p class="text-3xl font-bold text-primary mb-6 font-heading">
+      Aim to <strong class="text-accent">FEEL GOOD</strong> each moment. Stay aware by asking:
+    </p>
+    <p class="text-3xl italic text-secondary mb-8 border-l-4 border-accent pl-4 mx-auto max-w-lg">
+      “How am I experiencing this moment of being alive?”
+    </p>
+    <p class="text-lg text-dark mb-6">
+      If you notice a dip, <em class="text-accent font-semibold">first
+        <button data-footnote-link="get-back">get back</button>
+        to feeling good</em>. Then, within 30 minutes, <span class="text-accent font-semibold"> <button
+          data-footnote-link="suss-out">suss out</button></span> <em class="text-accent font-semibold">where, when, how, why <span
+          class="text-dark">–</span> and what for</em> – the dip occurred to nip it in the bud next time.
+    </p>
+    <p class="text-lg text-secondary">
+      Explore more at <a href="http://www.actualfreedom.com.au/richard/articles/thismomentofbeingalive.htm"
+        class="text-accent hover:underline font-semibold transition-colors duration-300">actualfreedom.com.au</a>
+    </p>
+  </div>
+
+  <!-- Footnote Panels (content in DOM, hidden by default) -->
+  <div class="footnote hidden" data-footnote="get-back">
+    <div class="footnote-header flex items-center justify-between bg-blue-50 px-4 py-2 mb-4 border-b border-accent">
+      <div class="footnote-title font-bold w-full m-0 p-0">Get back to feeling good</div>
+      <button class="close-btn">&times;</button>
+    </div>
+    <div class="footnote-content p-6">
+      <ul class="list-disc pl-6">
+        <li>Why get back to feeling good? <button data-footnote-link="why-get-back">See here</button></li>
+        <li>What if you are unable to get back to feeling good? <button data-footnote-link="unable-to-get-back">See here</button></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footnote hidden" data-footnote="unable-to-get-back">
+    <div class="footnote-header flex items-center justify-between bg-blue-50 px-4 py-2 mb-4 border-b border-accent">
+      <div class="footnote-title font-bold w-full m-0 p-0">Unable to get back to feeling good?</div>
+      <button class="close-btn">&times;</button>
+    </div>
+    <div class="footnote-content p-6">
+      <div>You simply see how silly it is to waste this only moment of being alive by feeling bad (see below), and if that doesn't work do something to take your mind off the current issue.</div>
+      <blockquote class="border-l-4 border-accent pl-4 my-4 text-sm text-dark">
+      <div><strong>RESPONDENT No 23:</strong> <em>What about when I find out what happened to end feeling good and I see
+          that it is silly to keep worrying about it yet that doesn’t stop the worrying and I am not back to feeling
+          good?</em></div>
+      <div><strong>RICHARD:</strong> Two things immediately leap to mind ... (1) you value feeling worry (a feeling of
+        anxious concern) over feeling good (a general sense of well-being) ... and (2) you have not really seen it is
+        silly to feel bad (a general sense of ill-being). What I would suggest, at this point, is to feel the silliness
+        of feeling bad (in this case feeling anxiety) ... then the seeing (as in a realisation) might very well have the
+        desired effect (as in an actualisation) of once more feeling good.</div>
+      <div><strong>RESPONDENT:</strong> <em>a) I am not able to see the silliness of feeling bad ...</em></div>
+      <div><strong>RICHARD:</strong> Do you comprehend that, although the past was actual when it was happening, it is
+        not actual now and that, although the future will be actual when it does happen, it is not actual now ... that
+        only this moment is actual?</div>
+      <div>If so, do you further comprehend that anytime you felt good/will feel good does not mean a thing if you are
+        not feeling good now ... that a remembered occasion/an anticipated occasion pales into insignificance if you are
+        feeling bad now?</div>
+      <div>Furthermore, do you understand that to be living this moment – the only moment you are ever alive – by
+        feeling bad is to be frittering away a vital opportunity to be fully alive ... to totally enjoy and appreciate
+        being what you indubitably are (a sensate creature) whilst you are here on this planet?</div>
+      <div>If so, is it not silly to waste this only moment you are ever alive by feeling bad ... when you could be
+        feeling good?</div>
+      <div class="pt-2 text-xs text-gray-500">Source: <a
+          href="https://www.actualfreedom.com.au/richard/selectedcorrespondence/sc-sense.htm"
+          class="text-accent underline hover:text-primary" target="_blank" rel="noopener">actualfreedom.com.au</a></div>
+</blockquote>
     </div>
 
-    <!-- Footnote Modal -->
-    <div id="footnoteModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50 hidden">
-      <div class="bg-white rounded-lg shadow-lg max-w-md w-full p-6 relative max-h-[80vh] overflow-y-auto text-sm">
-        <button id="closeFootnote" class="absolute top-2 right-2 text-gray-400 hover:text-accent text-2xl font-bold">&times;</button>
-        <div class="text-dark space-y-4">
-          <div><strong>RESPONDENT No 23:</strong> <em>What about when I find out what happened to end feeling good and I see that it is silly to keep worrying about it yet that doesn’t stop the worrying and I am not back to feeling good?</em></div>
-          <div><strong>RICHARD:</strong> Two things immediately leap to mind ... (1) you value feeling worry (a feeling of anxious concern) over feeling good (a general sense of well-being) ... and (2) you have not really seen it is silly to feel bad (a general sense of ill-being). What I would suggest, at this point, is to feel the silliness of feeling bad (in this case feeling anxiety) ... then the seeing (as in a realisation) might very well have the desired effect (as in an actualisation) of once more feeling good.</div>
-          <div><strong>RESPONDENT:</strong> <em>a) I am not able to see the silliness of feeling bad ...</em></div>
-          <div><strong>RICHARD:</strong> Do you comprehend that, although the past was actual when it was happening, it is not actual now and that, although the future will be actual when it does happen, it is not actual now ... that only this moment is actual?</div>
-          <div>If so, do you further comprehend that anytime you felt good/will feel good does not mean a thing if you are not feeling good now ... that a remembered occasion/an anticipated occasion pales into insignificance if you are feeling bad now?</div>
-          <div>Furthermore, do you understand that to be living this moment – the only moment you are ever alive – by feeling bad is to be frittering away a vital opportunity to be fully alive ... to totally enjoy and appreciate being what you indubitably are (a sensate creature) whilst you are here on this planet?</div>
-          <div>If so, is it not silly to waste this only moment you are ever alive by feeling bad ... when you could be feeling good?</div>
-          <div class="pt-2 text-xs text-gray-500">Source: <a href="https://www.actualfreedom.com.au/richard/selectedcorrespondence/sc-sense.htm" class="text-accent underline hover:text-primary" target="_blank" rel="noopener">https://www.actualfreedom.com.au/richard/selectedcorrespondence/sc-sense.htm</a></div>
-        </div>
+  </div>
+  <div class="footnote hidden" data-footnote="why-get-back">
+    <div class="footnote-header flex items-center justify-between bg-blue-50 px-4 py-2 mb-4 border-b border-accent">
+      <div class="footnote-title font-bold w-full m-0 p-0">Why get back to feeling good?</div>
+      <button class="close-btn">&times;</button>
+    </div>
+    <div class="footnote-content p-6">
+      <div>Because it is counter-productive to do anything whilst feeling bad. You are likely to go around in circles!</div>
+      <blockquote class="border-l-4 border-accent pl-4 my-4 text-sm text-dark">
+        <strong>[Richard]:</strong> What the identity inhabiting this flesh and blood body all those years ago would do is first get back to feeling good and then, and only then, suss out where, when, how, why – and what for – feeling bad happened as experience had shown ‘him’ that <mark>it was counter-productive to do otherwise</mark>.<br><br>
+        What ‘he’ always did however, as it was often tempting to just get on with life then, was to examine what it was all about within half-an-hour of getting back to feeling good (while the memory was still fresh) even if it meant sometimes falling back into feeling bad by doing so … else it would crop up again sooner or later.<br><br>
+        Nothing, but nothing, can be swept under the carpet.
+      </blockquote>
+      <div class="pt-2 text-xs text-gray-500">Source: <a href="http://www.actualfreedom.com.au/richard/articles/thismomentofbeingalive.htm" class="text-accent underline hover:text-primary" target="_blank" rel="noopener">thismomentofbeingalive.htm</a></div>
+    </div>
+  </div>
+  <div class="footnote hidden" data-footnote="suss-out">
+    <div class="footnote-header flex items-center justify-between bg-blue-50 px-4 py-2 mb-4 border-b border-accent">
+      <div class="footnote-title font-bold w-full m-0 p-0">Suss out</div>
+      <button class="close-btn">&times;</button>
+    </div>
+    <div class="footnote-content p-6">
+      <div><strong>NOTE:</strong> "Suss out" means to investigate or figure out. In the context of this page, it refers
+        to gently exploring the circumstances and triggers that led to a dip in feeling good, so you can recognize and
+        address them in the future.</div>
+      <div class="pt-2 text-xs text-gray-500">Inspired by <a href="https://notes.andymatuschak.org"
+          class="text-accent underline hover:text-primary" target="_blank" rel="noopener">TODO</a>
       </div>
     </div>
+  </div>
 
-    <script>
-      // Modal logic
-      const footnoteBtn = document.getElementById('footnoteBtn');
-      const footnoteModal = document.getElementById('footnoteModal');
-      const closeFootnote = document.getElementById('closeFootnote');
+  <script>
+    // Polymorphic footnote panel logic
+    const footnotes = [
+      { id: 'get-back' },
+      { id: 'unable-to-get-back' },
+      { id: 'why-get-back' },
+      { id: 'suss-out' }
+      // Add more footnotes here as needed
+    ];
 
-      function openFootnote() {
-        footnoteModal.classList.remove('hidden');
+    const closeBtnClass = 'text-gray-400 hover:text-accent text-2xl font-bold';
+    const footnoteLinkBtnClass = 'border-b border-dotted border-accent text-accent font-semibold cursor-pointer focus:outline-none';
+    const footnoteContentClass = 'text-dark space-y-4 text-sm p-6';
+
+    let openFootnoteStack = [];
+    let lastOpenedFromFootnote = false;
+
+    function showFootnotePanel(id) {
+      // If already open, bring to top and close panels above
+      const existingIdx = openFootnoteStack.indexOf(id);
+      if (existingIdx !== -1) {
+        // Close all panels above this one
+        for (let i = openFootnoteStack.length - 1; i > existingIdx; i--) {
+          hideFootnotePanel(openFootnoteStack[i], false);
+        }
+        return;
       }
-      function closeFootnoteModal() {
-        footnoteModal.classList.add('hidden');
+      if (!lastOpenedFromFootnote) {
+        // Opened from main page, clear stack
+        openFootnoteStack.forEach(fid => hideFootnotePanel(fid, false));
+        openFootnoteStack = [];
       }
-      footnoteBtn.addEventListener('click', openFootnote);
-      closeFootnote.addEventListener('click', closeFootnoteModal);
-      footnoteModal.addEventListener('click', function(e) {
-        if (e.target === footnoteModal) closeFootnoteModal();
+      openFootnoteStack.push(id);
+      updateFootnotePanels();
+      lastOpenedFromFootnote = false;
+    }
+
+    function hideFootnotePanel(id, update = true) {
+      const idx = openFootnoteStack.indexOf(id);
+      if (idx !== -1) {
+        // Close this and all panels above
+        for (let i = openFootnoteStack.length - 1; i >= idx; i--) {
+          const panel = document.querySelector(`.footnote[data-footnote="${openFootnoteStack[i]}"]`);
+          if (panel) {
+            panel.classList.add('hidden');
+            panel.style.transform = '';
+            panel.style.top = '';
+            panel.style.zIndex = '';
+          }
+          openFootnoteStack.pop();
+        }
+        if (update) updateFootnotePanels();
+      }
+    }
+
+    function updateFootnotePanels() {
+      // Hide all panels first
+      document.querySelectorAll('.footnote').forEach(panel => {
+        panel.classList.add('hidden');
+        panel.style.transform = '';
+        panel.style.top = '';
+        panel.style.zIndex = '';
       });
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') closeFootnoteModal();
+      let offset = 0;
+      openFootnoteStack.forEach((id, i) => {
+        const panel = document.querySelector(`.footnote[data-footnote="${id}"]`);
+        if (panel) {
+          panel.classList.remove('hidden');
+          panel.classList.add('fixed', 'right-0', 'w-96', 'max-w-full', 'bg-white', 'shadow-2xl', 'z-50', 'border-l', 'border-accent', 'transition-transform', 'duration-300', 'flex', 'flex-col');
+          panel.style.left = '';
+          panel.style.right = '0';
+          panel.style.width = '24rem';
+          panel.style.maxWidth = '100%';
+          panel.style.zIndex = 50 + i;
+          panel.style.height = 'calc(100vh - ' + offset + 'px)';
+          // Only the last (topmost) panel shows content
+          const contentDiv = panel.querySelector('.footnote-content');
+          if (contentDiv) {
+            if (i === openFootnoteStack.length - 1) {
+              contentDiv.style.display = '';
+              contentDiv.style.overflowY = 'auto';
+              contentDiv.style.flex = '1 1 auto';
+              contentDiv.style.maxHeight = '100%';
+            } else {
+              contentDiv.style.display = 'none';
+              contentDiv.style.overflowY = '';
+              contentDiv.style.flex = '';
+              contentDiv.style.maxHeight = '';
+            }
+          }
+          // Position panel below previous headers
+          panel.style.top = offset + 'px';
+          // Get header height
+          const header = panel.querySelector('.footnote-header');
+          if (header) {
+            header.style.cursor = (i < openFootnoteStack.length - 1) ? 'pointer' : '';
+            if (i < openFootnoteStack.length - 1) {
+              header.onclick = () => {
+                // Close all panels below this one (i.e., with index > i)
+                while (openFootnoteStack.length > i + 1) {
+                  hideFootnotePanel(openFootnoteStack[openFootnoteStack.length - 1], false);
+                }
+                updateFootnotePanels();
+              };
+            } else {
+              header.onclick = null;
+            }
+            // Attach close button logic: close this and all below
+            const closeBtn = header.querySelector('.close-btn');
+            if (closeBtn) {
+              closeBtn.onclick = (e) => {
+                e.stopPropagation();
+                // Close this and all panels below (i.e., with index >= i)
+                while (openFootnoteStack.length > i) {
+                  hideFootnotePanel(openFootnoteStack[openFootnoteStack.length - 1], false);
+                }
+                updateFootnotePanels();
+              };
+            }
+            offset += header.offsetHeight;
+          }
+        }
       });
-    </script>
+    }
+
+    // Attach event listeners and classes for all footnote links
+    footnotes.forEach(({ id }) => {
+      const btnEls = document.querySelectorAll(`[data-footnote-link="${id}"]`);
+      btnEls.forEach(btnEl => {
+        btnEl.className = footnoteLinkBtnClass;
+        // Set tooltip to the title if available
+        const titleDiv = document.querySelector(`.footnote[data-footnote="${id}"] .footnote-title`);
+        if (titleDiv) {
+          btnEl.title = titleDiv.textContent.trim();
+        }
+        btnEl.addEventListener('click', function (e) {
+          // If the link is inside a footnote panel, set cascading
+          lastOpenedFromFootnote = !!btnEl.closest('.footnote:not(.hidden)');
+          showFootnotePanel(id);
+        });
+      });
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        // Close only the topmost (last opened and visible) footnote
+        if (openFootnoteStack.length > 0) {
+          hideFootnotePanel(openFootnoteStack[openFootnoteStack.length - 1]);
+        }
+      }
+    });
+  </script>
 </body>
+
 </html>
