@@ -53,6 +53,19 @@ function hideFootnotePanel(id, update = true) {
 }
 
 function updateFootnotePanels() {
+  // Overlay logic: show if any footnote is open
+  const overlay = document.getElementById('footnote-overlay');
+  if (overlay) {
+    if (openFootnoteStack.length > 0) {
+      overlay.style.display = 'block';
+      overlay.classList.remove('hidden');
+      overlay.style.opacity = '1';
+    } else {
+      overlay.style.display = 'none';
+      overlay.classList.add('hidden');
+      overlay.style.opacity = '0';
+    }
+  }
   // Hide all panels first
   document.querySelectorAll('.footnote').forEach(panel => {
     panel.classList.add('hidden');
