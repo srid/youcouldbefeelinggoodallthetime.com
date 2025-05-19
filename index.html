@@ -1,133 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>You Could Be Feeling Good All the Time</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: '#3a7ca5',
-              secondary: '#2a9d8f',
-              accent: '#e76f51',
-              light: '#f8f9fa',
-              dark: '#2b2d42'
-            },
-            fontFamily: {
-              heading: ['Montserrat', 'sans-serif'],
-              body: ['Open Sans', 'sans-serif']
-            }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You Could Be Feeling Good All the Time</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap"
+    rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3a7ca5',
+            secondary: '#2a9d8f',
+            accent: '#e76f51',
+            light: '#f8f9fa',
+            dark: '#2b2d42'
+          },
+          fontFamily: {
+            heading: ['Montserrat', 'sans-serif'],
+            body: ['Open Sans', 'sans-serif']
           }
         }
       }
-    </script>
-    <style>
-      /* Custom tooltip styles */
-      .tooltip {
-        position: relative;
-        display: inline-block;
-        cursor: pointer;
-      }
-      
-      .tooltip .tooltip-text {
-        visibility: hidden;
-        width: 200px;
-        background-color: rgba(43, 45, 66, 0.95);
-        color: #fff;
-        text-align: center;
-        border-radius: 6px;
-        padding: 8px;
-        position: absolute;
-        z-index: 1;
-        bottom: 125%;
-        left: 50%;
-        transform: translateX(-50%);
-        opacity: 0;
-        transition: opacity 0.3s;
-      }
-      
-      .tooltip .tooltip-text::after {
-        content: "";
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: rgba(43, 45, 66, 0.95) transparent transparent transparent;
-      }
-      
-      .tooltip:hover .tooltip-text {
-        visibility: visible;
-        opacity: 1;
-      }
-    </style>
-</head>
-<body class="bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center min-h-screen font-body">
-    <div class="text-center p-10 max-w-2xl bg-white rounded-xl shadow-xl transition-all duration-300 hover:shadow-2xl">
-        <h1 class="text-5xl font-extrabold text-primary mb-8 font-heading">You Could Be Feeling Good All the Time</h1>
-        <p class="text-2xl text-secondary mb-6">
-            Feeling good is a <strong>general sense of well-being</strong> – a mood, not an emotion.
-        </p>
-        <p class="text-3xl font-bold text-primary mb-6 font-heading">
-            Aim to <strong class="text-accent">FEEL GOOD</strong> each moment. Stay aware by asking:
-        </p>
-        <p class="text-3xl italic text-secondary mb-8 border-l-4 border-accent pl-4 mx-auto max-w-lg">
-            "How am I experiencing this moment of being alive?"
-        </p>
-        <p class="text-lg text-dark mb-6">
-            If you notice a dip, <em class="text-accent font-semibold">first 
-            <button id="footnoteBtn" class="border-b border-dotted border-accent text-accent font-semibold cursor-pointer focus:outline-none">get back</button>
-            to feeling good</em>. Then, within 30 minutes, suss out <em class="text-accent font-semibold">where, when, how, why <span class="text-dark">–</span> and what for</em> – the dip occurred to nip it in the bud next time.
-        </p>
-        <p class="text-lg text-secondary">
-            Explore more at <a href="http://www.actualfreedom.com.au/richard/articles/thismomentofbeingalive.htm" class="text-accent hover:underline font-semibold transition-colors duration-300">ActualFreedom.com.au</a>
-        </p>
-    </div>
+    }
+  </script>
+  <style>
+    /* Custom tooltip styles */
+    .tooltip {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
 
-    <!-- Footnote Modal -->
-    <div id="footnoteModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50 hidden">
-      <div class="bg-white rounded-lg shadow-lg max-w-md w-full p-6 relative max-h-[80vh] overflow-y-auto text-sm">
-        <button id="closeFootnote" class="absolute top-2 right-2 text-gray-400 hover:text-accent text-2xl font-bold">&times;</button>
-        <div class="text-dark space-y-4">
-          <div><strong>RESPONDENT No 23:</strong> <em>What about when I find out what happened to end feeling good and I see that it is silly to keep worrying about it yet that doesn’t stop the worrying and I am not back to feeling good?</em></div>
-          <div><strong>RICHARD:</strong> Two things immediately leap to mind ... (1) you value feeling worry (a feeling of anxious concern) over feeling good (a general sense of well-being) ... and (2) you have not really seen it is silly to feel bad (a general sense of ill-being). What I would suggest, at this point, is to feel the silliness of feeling bad (in this case feeling anxiety) ... then the seeing (as in a realisation) might very well have the desired effect (as in an actualisation) of once more feeling good.</div>
-          <div><strong>RESPONDENT:</strong> <em>a) I am not able to see the silliness of feeling bad ...</em></div>
-          <div><strong>RICHARD:</strong> Do you comprehend that, although the past was actual when it was happening, it is not actual now and that, although the future will be actual when it does happen, it is not actual now ... that only this moment is actual?</div>
-          <div>If so, do you further comprehend that anytime you felt good/will feel good does not mean a thing if you are not feeling good now ... that a remembered occasion/an anticipated occasion pales into insignificance if you are feeling bad now?</div>
-          <div>Furthermore, do you understand that to be living this moment – the only moment you are ever alive – by feeling bad is to be frittering away a vital opportunity to be fully alive ... to totally enjoy and appreciate being what you indubitably are (a sensate creature) whilst you are here on this planet?</div>
-          <div>If so, is it not silly to waste this only moment you are ever alive by feeling bad ... when you could be feeling good?</div>
-          <div class="pt-2 text-xs text-gray-500">Source: <a href="https://www.actualfreedom.com.au/richard/selectedcorrespondence/sc-sense.htm" class="text-accent underline hover:text-primary" target="_blank" rel="noopener">https://www.actualfreedom.com.au/richard/selectedcorrespondence/sc-sense.htm</a></div>
-        </div>
+    .tooltip .tooltip-text {
+      visibility: hidden;
+      width: 200px;
+      background-color: rgba(43, 45, 66, 0.95);
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 8px;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .tooltip .tooltip-text::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: rgba(43, 45, 66, 0.95) transparent transparent transparent;
+    }
+
+    .tooltip:hover .tooltip-text {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center min-h-screen font-body">
+  <div class="text-center p-10 max-w-2xl bg-white rounded-xl shadow-xl transition-all duration-300 hover:shadow-2xl">
+    <h1 class="text-5xl font-extrabold text-primary mb-8 font-heading">You Could Be Feeling Good All the Time</h1>
+    <p class="text-2xl text-secondary mb-6">
+      Feeling good is a <strong>general sense of well-being</strong> – a mood, not an emotion.
+    </p>
+    <p class="text-3xl font-bold text-primary mb-6 font-heading">
+      Aim to <strong class="text-accent">FEEL GOOD</strong> each moment. Stay aware by asking:
+    </p>
+    <p class="text-3xl italic text-secondary mb-8 border-l-4 border-accent pl-4 mx-auto max-w-lg">
+      “How am I experiencing this moment of being alive?”
+    </p>
+    <p class="text-lg text-dark mb-6">
+      If you notice a dip, <em class="text-accent font-semibold">first
+        <button data-footnote-link="get-back">get back</button>
+        to feeling good</em>. Then, within 30 minutes, <span class="text-accent font-semibold"> <button
+          data-footnote-link="suss-out">suss out</button></span> <em class="text-accent font-semibold">where, when, how, why <span
+          class="text-dark">–</span> and what for</em> – the dip occurred to nip it in the bud next time.
+    </p>
+    <p class="text-lg text-secondary">
+      Explore more at <a href="http://www.actualfreedom.com.au/richard/articles/thismomentofbeingalive.htm"
+        class="text-accent hover:underline font-semibold transition-colors duration-300">actualfreedom.com.au</a>
+    </p>
+  </div>
+
+  <!-- Footnote Panels (content in DOM, hidden by default) -->
+  <div class="footnote hidden" data-footnote="get-back">
+    <button class="close-btn">&times;</button>
+    <div class="footnote-content">
+      <ul class="list-disc pl-6">
+        <li>What if you are unable to get back to feeling good? <button data-footnote-link="unable-to-get-back">See here</button></li>
+        <li>Why get back to feeling good? <button data-footnote-link="why-get-back">See here</button></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footnote hidden" data-footnote="unable-to-get-back">
+    <button class="close-btn">&times;</button>
+    <div class="footnote-content">
+      <div><strong>RESPONDENT No 23:</strong> <em>What about when I find out what happened to end feeling good and I see
+          that it is silly to keep worrying about it yet that doesn’t stop the worrying and I am not back to feeling
+          good?</em></div>
+      <div><strong>RICHARD:</strong> Two things immediately leap to mind ... (1) you value feeling worry (a feeling of
+        anxious concern) over feeling good (a general sense of well-being) ... and (2) you have not really seen it is
+        silly to feel bad (a general sense of ill-being). What I would suggest, at this point, is to feel the silliness
+        of feeling bad (in this case feeling anxiety) ... then the seeing (as in a realisation) might very well have the
+        desired effect (as in an actualisation) of once more feeling good.</div>
+      <div><strong>RESPONDENT:</strong> <em>a) I am not able to see the silliness of feeling bad ...</em></div>
+      <div><strong>RICHARD:</strong> Do you comprehend that, although the past was actual when it was happening, it is
+        not actual now and that, although the future will be actual when it does happen, it is not actual now ... that
+        only this moment is actual?</div>
+      <div>If so, do you further comprehend that anytime you felt good/will feel good does not mean a thing if you are
+        not feeling good now ... that a remembered occasion/an anticipated occasion pales into insignificance if you are
+        feeling bad now?</div>
+      <div>Furthermore, do you understand that to be living this moment – the only moment you are ever alive – by
+        feeling bad is to be frittering away a vital opportunity to be fully alive ... to totally enjoy and appreciate
+        being what you indubitably are (a sensate creature) whilst you are here on this planet?</div>
+      <div>If so, is it not silly to waste this only moment you are ever alive by feeling bad ... when you could be
+        feeling good?</div>
+      <div class="pt-2 text-xs text-gray-500">Source: <a
+          href="https://www.actualfreedom.com.au/richard/selectedcorrespondence/sc-sense.htm"
+          class="text-accent underline hover:text-primary" target="_blank" rel="noopener">actualfreedom.com.au</a></div>
+    </div>
+  </div>
+  <div class="footnote hidden" data-footnote="why-get-back">
+    <button class="close-btn">&times;</button>
+    <div class="footnote-content">
+      <div><strong>Why get back to feeling good?</strong></div>
+      <div>Feeling good is a prerequisite for clear perception, effective action, and enjoying life. When you are feeling good, you are more likely to respond wisely to situations, rather than react out of habit or emotion. This is not about ignoring problems, but about approaching them from a place of well-being.</div>
+      <div class="pt-2 text-xs text-gray-500">See also: <a href="http://www.actualfreedom.com.au/richard/selectedcorrespondence/sc-intelligence.htm" class="text-accent underline hover:text-primary" target="_blank" rel="noopener">actualfreedom.com.au</a></div>
+    </div>
+  </div>
+  <div class="footnote hidden" data-footnote="suss-out">
+    <button class="close-btn">&times;</button>
+    <div class="footnote-content">
+      <div><strong>NOTE:</strong> "Suss out" means to investigate or figure out. In the context of this page, it refers
+        to gently exploring the circumstances and triggers that led to a dip in feeling good, so you can recognize and
+        address them in the future.</div>
+      <div class="pt-2 text-xs text-gray-500">Inspired by <a href="https://notes.andymatuschak.org"
+          class="text-accent underline hover:text-primary" target="_blank" rel="noopener">TODO</a>
       </div>
     </div>
+  </div>
 
-    <script>
-      // Modal logic
-      const footnoteBtn = document.getElementById('footnoteBtn');
-      const footnoteModal = document.getElementById('footnoteModal');
-      const closeFootnote = document.getElementById('closeFootnote');
+  <script>
+    // Polymorphic footnote panel logic
+    const footnotes = [
+      { id: 'get-back' },
+      { id: 'unable-to-get-back' },
+      { id: 'why-get-back' },
+      { id: 'suss-out' }
+      // Add more footnotes here as needed
+    ];
 
-      function openFootnote() {
-        footnoteModal.classList.remove('hidden');
+    const closeBtnClass = 'absolute top-2 right-2 text-gray-400 hover:text-accent text-2xl font-bold';
+    const footnoteLinkBtnClass = 'border-b border-dotted border-accent text-accent font-semibold cursor-pointer focus:outline-none';
+    const footnoteContentClass = 'text-dark space-y-4 text-sm';
+
+    function showFootnotePanel(id) {
+      const panel = document.querySelector(`.footnote[data-footnote="${id}"]`);
+      if (panel) {
+        panel.classList.remove('hidden');
+        panel.classList.add('fixed', 'top-0', 'right-0', 'h-full', 'w-96', 'max-w-full', 'bg-white', 'shadow-2xl', 'z-50', 'p-6', 'overflow-y-auto', 'border-l', 'border-accent', 'transition-transform', 'duration-300');
+        panel.style.transform = 'translateX(0)';
+        // Attach close button event and class
+        const closeBtn = panel.querySelector('.close-btn');
+        if (closeBtn) {
+          closeBtn.className = closeBtnClass;
+          closeBtn.onclick = () => hideFootnotePanel(id);
+        }
+        // Attach content class
+        const contentDiv = panel.querySelector('.footnote-content');
+        if (contentDiv) {
+          contentDiv.className = footnoteContentClass;
+        }
       }
-      function closeFootnoteModal() {
-        footnoteModal.classList.add('hidden');
+    }
+    function hideFootnotePanel(id) {
+      const panel = document.querySelector(`.footnote[data-footnote="${id}"]`);
+      if (panel) {
+        panel.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+          panel.classList.add('hidden');
+        }, 300);
       }
-      footnoteBtn.addEventListener('click', openFootnote);
-      closeFootnote.addEventListener('click', closeFootnoteModal);
-      footnoteModal.addEventListener('click', function(e) {
-        if (e.target === footnoteModal) closeFootnoteModal();
+    }
+
+    // Attach event listeners and classes for all footnote links
+    footnotes.forEach(({ id }) => {
+      const btnEls = document.querySelectorAll(`[data-footnote-link="${id}"]`);
+      btnEls.forEach(btnEl => {
+        btnEl.className = footnoteLinkBtnClass;
+        btnEl.addEventListener('click', function () {
+          showFootnotePanel(id);
+        });
       });
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') closeFootnoteModal();
-      });
-    </script>
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        footnotes.forEach(({ id }) => hideFootnotePanel(id));
+      }
+    });
+  </script>
 </body>
+
 </html>
