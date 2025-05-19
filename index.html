@@ -102,6 +102,7 @@
   <div class="footnote hidden" data-footnote="get-back">
     <button class="close-btn">&times;</button>
     <div class="footnote-content">
+      <div class="footnote-title font-bold">Get back to feeling good</div>
       <ul class="list-disc pl-6">
         <li>Why get back to feeling good? <button data-footnote-link="why-get-back">See here</button></li>
         <li>What if you are unable to get back to feeling good? <button data-footnote-link="unable-to-get-back">See here</button></li>
@@ -111,6 +112,7 @@
   <div class="footnote hidden" data-footnote="unable-to-get-back">
     <button class="close-btn">&times;</button>
     <div class="footnote-content">
+      <div class="footnote-title font-bold">Unable to get back to feeling good?</div>
       <div><strong>RESPONDENT No 23:</strong> <em>What about when I find out what happened to end feeling good and I see
           that it is silly to keep worrying about it yet that doesn’t stop the worrying and I am not back to feeling
           good?</em></div>
@@ -139,7 +141,7 @@
   <div class="footnote hidden" data-footnote="why-get-back">
     <button class="close-btn">&times;</button>
     <div class="footnote-content">
-      <div><strong>Why get back to feeling good?</strong></div>
+      <div class="footnote-title font-bold">Why get back to feeling good?</div>
       <div>Because it is counter-productive to do anything whilst feeling bad. You are likely to go around in circles!</div>
       <blockquote class="border-l-4 border-accent pl-4 my-4 text-sm text-dark">
         <strong>[Richard]:</strong> What the identity inhabiting this flesh and blood body all those years ago would do is first get back to feeling good and then, and only then, suss out where, when, how, why – and what for – feeling bad happened as experience had shown ‘him’ that <mark>it was counter-productive to do otherwise</mark>.<br><br>
@@ -152,6 +154,7 @@
   <div class="footnote hidden" data-footnote="suss-out">
     <button class="close-btn">&times;</button>
     <div class="footnote-content">
+      <div class="footnote-title font-bold">Suss out</div>
       <div><strong>NOTE:</strong> "Suss out" means to investigate or figure out. In the context of this page, it refers
         to gently exploring the circumstances and triggers that led to a dip in feeling good, so you can recognize and
         address them in the future.</div>
@@ -209,6 +212,11 @@
       const btnEls = document.querySelectorAll(`[data-footnote-link="${id}"]`);
       btnEls.forEach(btnEl => {
         btnEl.className = footnoteLinkBtnClass;
+        // Set tooltip to the title if available
+        const titleDiv = document.querySelector(`.footnote[data-footnote="${id}"] .footnote-title`);
+        if (titleDiv) {
+          btnEl.title = titleDiv.textContent.trim();
+        }
         btnEl.addEventListener('click', function () {
           showFootnotePanel(id);
         });
