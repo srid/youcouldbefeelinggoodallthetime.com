@@ -70,6 +70,11 @@
       visibility: visible;
       opacity: 1;
     }
+
+    .footnote-header {
+      /* Already using Tailwind classes for most styling, but add any custom tweaks here if needed */
+      /* Example: box-shadow or extra separation if desired */
+    }
   </style>
 </head>
 
@@ -100,9 +105,11 @@
 
   <!-- Footnote Panels (content in DOM, hidden by default) -->
   <div class="footnote hidden" data-footnote="get-back">
-    <button class="close-btn">&times;</button>
-    <div class="footnote-content">
-      <div class="footnote-title font-bold">Get back to feeling good</div>
+    <div class="footnote-header flex items-center justify-between bg-blue-50 px-4 py-2 mb-4 border-b border-accent">
+      <div class="footnote-title font-bold w-full m-0 p-0">Get back to feeling good</div>
+      <button class="close-btn">&times;</button>
+    </div>
+    <div class="footnote-content p-6">
       <ul class="list-disc pl-6">
         <li>Why get back to feeling good? <button data-footnote-link="why-get-back">See here</button></li>
         <li>What if you are unable to get back to feeling good? <button data-footnote-link="unable-to-get-back">See here</button></li>
@@ -110,9 +117,11 @@
     </div>
   </div>
   <div class="footnote hidden" data-footnote="unable-to-get-back">
-    <button class="close-btn">&times;</button>
-    <div class="footnote-content">
-      <div class="footnote-title font-bold">Unable to get back to feeling good?</div>
+    <div class="footnote-header flex items-center justify-between bg-blue-50 px-4 py-2 mb-4 border-b border-accent">
+      <div class="footnote-title font-bold w-full m-0 p-0">Unable to get back to feeling good?</div>
+      <button class="close-btn">&times;</button>
+    </div>
+    <div class="footnote-content p-6">
       <div><strong>RESPONDENT No 23:</strong> <em>What about when I find out what happened to end feeling good and I see
           that it is silly to keep worrying about it yet that doesn’t stop the worrying and I am not back to feeling
           good?</em></div>
@@ -139,9 +148,11 @@
     </div>
   </div>
   <div class="footnote hidden" data-footnote="why-get-back">
-    <button class="close-btn">&times;</button>
-    <div class="footnote-content">
-      <div class="footnote-title font-bold">Why get back to feeling good?</div>
+    <div class="footnote-header flex items-center justify-between bg-blue-50 px-4 py-2 mb-4 border-b border-accent">
+      <div class="footnote-title font-bold w-full m-0 p-0">Why get back to feeling good?</div>
+      <button class="close-btn">&times;</button>
+    </div>
+    <div class="footnote-content p-6">
       <div>Because it is counter-productive to do anything whilst feeling bad. You are likely to go around in circles!</div>
       <blockquote class="border-l-4 border-accent pl-4 my-4 text-sm text-dark">
         <strong>[Richard]:</strong> What the identity inhabiting this flesh and blood body all those years ago would do is first get back to feeling good and then, and only then, suss out where, when, how, why – and what for – feeling bad happened as experience had shown ‘him’ that <mark>it was counter-productive to do otherwise</mark>.<br><br>
@@ -152,9 +163,11 @@
     </div>
   </div>
   <div class="footnote hidden" data-footnote="suss-out">
-    <button class="close-btn">&times;</button>
-    <div class="footnote-content">
-      <div class="footnote-title font-bold">Suss out</div>
+    <div class="footnote-header flex items-center justify-between bg-blue-50 px-4 py-2 mb-4 border-b border-accent">
+      <div class="footnote-title font-bold w-full m-0 p-0">Suss out</div>
+      <button class="close-btn">&times;</button>
+    </div>
+    <div class="footnote-content p-6">
       <div><strong>NOTE:</strong> "Suss out" means to investigate or figure out. In the context of this page, it refers
         to gently exploring the circumstances and triggers that led to a dip in feeling good, so you can recognize and
         address them in the future.</div>
@@ -174,15 +187,15 @@
       // Add more footnotes here as needed
     ];
 
-    const closeBtnClass = 'absolute top-2 right-2 text-gray-400 hover:text-accent text-2xl font-bold';
+    const closeBtnClass = 'text-gray-400 hover:text-accent text-2xl font-bold';
     const footnoteLinkBtnClass = 'border-b border-dotted border-accent text-accent font-semibold cursor-pointer focus:outline-none';
-    const footnoteContentClass = 'text-dark space-y-4 text-sm';
+    const footnoteContentClass = 'text-dark space-y-4 text-sm p-6';
 
     function showFootnotePanel(id) {
       const panel = document.querySelector(`.footnote[data-footnote="${id}"]`);
       if (panel) {
         panel.classList.remove('hidden');
-        panel.classList.add('fixed', 'top-0', 'right-0', 'h-full', 'w-96', 'max-w-full', 'bg-white', 'shadow-2xl', 'z-50', 'p-6', 'overflow-y-auto', 'border-l', 'border-accent', 'transition-transform', 'duration-300');
+        panel.classList.add('fixed', 'top-0', 'right-0', 'h-full', 'w-96', 'max-w-full', 'bg-white', 'shadow-2xl', 'z-50', 'overflow-y-auto', 'border-l', 'border-accent', 'transition-transform', 'duration-300');
         panel.style.transform = 'translateX(0)';
         // Attach close button event and class
         const closeBtn = panel.querySelector('.close-btn');
