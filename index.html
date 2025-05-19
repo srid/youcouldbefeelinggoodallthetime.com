@@ -191,33 +191,108 @@
     const footnoteLinkBtnClass = 'border-b border-dotted border-accent text-accent font-semibold cursor-pointer focus:outline-none';
     const footnoteContentClass = 'text-dark space-y-4 text-sm p-6';
 
+    let openFootnoteStack = [];
+    let lastOpenedFromFootnote = false;
+
     function showFootnotePanel(id) {
-      const panel = document.querySelector(`.footnote[data-footnote="${id}"]`);
-      if (panel) {
-        panel.classList.remove('hidden');
-        panel.classList.add('fixed', 'top-0', 'right-0', 'h-full', 'w-96', 'max-w-full', 'bg-white', 'shadow-2xl', 'z-50', 'overflow-y-auto', 'border-l', 'border-accent', 'transition-transform', 'duration-300');
-        panel.style.transform = 'translateX(0)';
-        // Attach close button event and class
-        const closeBtn = panel.querySelector('.close-btn');
-        if (closeBtn) {
-          closeBtn.className = closeBtnClass;
-          closeBtn.onclick = () => hideFootnotePanel(id);
+      // If already open, bring to top and close panels above
+      const existingIdx = openFootnoteStack.indexOf(id);
+      if (existingIdx !== -1) {
+        // Close all panels above this one
+        for (let i = openFootnoteStack.length - 1; i > existingIdx; i--) {
+          hideFootnotePanel(openFootnoteStack[i], false);
         }
-        // Attach content class
-        const contentDiv = panel.querySelector('.footnote-content');
-        if (contentDiv) {
-          contentDiv.className = footnoteContentClass;
+        return;
+      }
+      if (!lastOpenedFromFootnote) {
+        // Opened from main page, clear stack
+        openFootnoteStack.forEach(fid => hideFootnotePanel(fid, false));
+        openFootnoteStack = [];
+      }
+      openFootnoteStack.push(id);
+      updateFootnotePanels();
+      lastOpenedFromFootnote = false;
+    }
+
+    function hideFootnotePanel(id, update = true) {
+      const idx = openFootnoteStack.indexOf(id);
+      if (idx !== -1) {
+        // Close this and all panels above
+        for (let i = openFootnoteStack.length - 1; i >= idx; i--) {
+          const panel = document.querySelector(`.footnote[data-footnote="${openFootnoteStack[i]}"]`);
+          if (panel) {
+            panel.classList.add('hidden');
+            panel.style.transform = '';
+            panel.style.top = '';
+            panel.style.zIndex = '';
+          }
+          openFootnoteStack.pop();
         }
+        if (update) updateFootnotePanels();
       }
     }
-    function hideFootnotePanel(id) {
-      const panel = document.querySelector(`.footnote[data-footnote="${id}"]`);
-      if (panel) {
-        panel.style.transform = 'translateX(100%)';
-        setTimeout(() => {
-          panel.classList.add('hidden');
-        }, 300);
-      }
+
+    function updateFootnotePanels() {
+      // Hide all panels first
+      document.querySelectorAll('.footnote').forEach(panel => {
+        panel.classList.add('hidden');
+        panel.style.transform = '';
+        panel.style.top = '';
+        panel.style.zIndex = '';
+      });
+      let offset = 0;
+      openFootnoteStack.forEach((id, i) => {
+        const panel = document.querySelector(`.footnote[data-footnote="${id}"]`);
+        if (panel) {
+          panel.classList.remove('hidden');
+          panel.classList.add('fixed', 'right-0', 'w-96', 'max-w-full', 'bg-white', 'shadow-2xl', 'z-50', 'border-l', 'border-accent', 'transition-transform', 'duration-300', 'flex', 'flex-col');
+          panel.style.left = '';
+          panel.style.right = '0';
+          panel.style.width = '24rem';
+          panel.style.maxWidth = '100%';
+          panel.style.zIndex = 50 + i;
+          panel.style.height = '100vh';
+          // Only the last (topmost) panel shows content
+          const contentDiv = panel.querySelector('.footnote-content');
+          if (contentDiv) {
+            contentDiv.style.display = (i === openFootnoteStack.length - 1) ? '' : 'none';
+            contentDiv.style.overflowY = (i === openFootnoteStack.length - 1) ? 'auto' : '';
+            contentDiv.style.flex = (i === openFootnoteStack.length - 1) ? '1 1 auto' : '';
+            contentDiv.style.maxHeight = (i === openFootnoteStack.length - 1) ? 'calc(100vh - ' + (offset + (header ? header.offsetHeight : 0)) + 'px)' : '';
+          }
+          // Position panel below previous headers
+          panel.style.top = offset + 'px';
+          // Get header height
+          const header = panel.querySelector('.footnote-header');
+          if (header) {
+            header.style.cursor = (i < openFootnoteStack.length - 1) ? 'pointer' : '';
+            if (i < openFootnoteStack.length - 1) {
+              header.onclick = () => {
+                // Close all panels below this one (i.e., with index > i)
+                while (openFootnoteStack.length > i + 1) {
+                  hideFootnotePanel(openFootnoteStack[openFootnoteStack.length - 1], false);
+                }
+                updateFootnotePanels();
+              };
+            } else {
+              header.onclick = null;
+            }
+            // Attach close button logic: close this and all below
+            const closeBtn = header.querySelector('.close-btn');
+            if (closeBtn) {
+              closeBtn.onclick = (e) => {
+                e.stopPropagation();
+                // Close this and all panels below (i.e., with index >= i)
+                while (openFootnoteStack.length > i) {
+                  hideFootnotePanel(openFootnoteStack[openFootnoteStack.length - 1], false);
+                }
+                updateFootnotePanels();
+              };
+            }
+            offset += header.offsetHeight;
+          }
+        }
+      });
     }
 
     // Attach event listeners and classes for all footnote links
@@ -230,7 +305,9 @@
         if (titleDiv) {
           btnEl.title = titleDiv.textContent.trim();
         }
-        btnEl.addEventListener('click', function () {
+        btnEl.addEventListener('click', function (e) {
+          // If the link is inside a footnote panel, set cascading
+          lastOpenedFromFootnote = !!btnEl.closest('.footnote:not(.hidden)');
           showFootnotePanel(id);
         });
       });
@@ -239,12 +316,8 @@
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') {
         // Close only the topmost (last opened and visible) footnote
-        const openPanels = Array.from(document.querySelectorAll('.footnote:not(.hidden)'));
-        if (openPanels.length > 0) {
-          // The last in DOM order is the topmost
-          const topmost = openPanels[openPanels.length - 1];
-          const id = topmost.getAttribute('data-footnote');
-          if (id) hideFootnotePanel(id);
+        if (openFootnoteStack.length > 0) {
+          hideFootnotePanel(openFootnoteStack[openFootnoteStack.length - 1]);
         }
       }
     });
