@@ -70,11 +70,6 @@
       visibility: visible;
       opacity: 1;
     }
-
-    .footnote-header {
-      /* Already using Tailwind classes for most styling, but add any custom tweaks here if needed */
-      /* Example: box-shadow or extra separation if desired */
-    }
   </style>
   <style type="text/tailwindcss">
     .footnote-content {
@@ -83,6 +78,34 @@
 
     .footnote-quote {
       @apply border-l-4 border-accent pl-4 my-4 text-sm text-dark;
+    }
+
+    .footnote-source {
+      @apply pt-2 text-xs text-gray-500;
+    }
+
+    .footnote-link {
+      @apply text-accent font-semibold underline hover:text-primary transition-colors duration-300 cursor-pointer bg-transparent border-none p-0 m-0;
+    }
+
+    .footnote-list {
+      @apply list-disc pl-6;
+    }
+
+    .footnote-em {
+      @apply text-accent font-semibold;
+    }
+
+    .close-btn {
+      @apply text-2xl text-accent font-bold bg-transparent border-none cursor-pointer px-2 py-0 leading-none focus:outline-none focus:ring-2 focus:ring-accent;
+    }
+
+    .footnote-header {
+      @apply flex items-center justify-between bg-blue-50 px-4 py-2 mb-4 border-b border-accent;
+    }
+
+    .footnote-title {
+      @apply font-bold w-full m-0 p-0;
     }
   </style>
 </head>
@@ -101,9 +124,9 @@
     </p>
     <p class="text-lg text-dark mb-6">
       If you notice a dip, <em class="text-accent font-semibold">first
-        <button data-footnote-link="get-back">get back</button>
-        to feeling good</em>. Then, within 30 minutes, <span class="text-accent font-semibold"> <button
-          data-footnote-link="suss-out">suss out</button></span> <em class="text-accent font-semibold">where, when, how, why <span
+        <button class="footnote-link" data-footnote-link="get-back">get back</button>
+        to feeling good</em>. Then, within 30 minutes, <span class="footnote-em"> <button class="footnote-link"
+          data-footnote-link="suss-out">suss out</button></span> <em class="footnote-em">where, when, how, why <span
           class="text-dark">–</span> and what for</em> – the dip occurred to nip it in the bud next time.
     </p>
     <p class="text-lg text-secondary">
@@ -114,20 +137,20 @@
 
   <!-- Footnote Panels (content in DOM, hidden by default) -->
   <div class="footnote hidden" data-footnote="get-back">
-    <div class="footnote-header flex items-center justify-between bg-blue-50 px-4 py-2 mb-4 border-b border-accent">
-      <div class="footnote-title font-bold w-full m-0 p-0">Get back to feeling good</div>
+    <div class="footnote-header">
+      <div class="footnote-title">Get back to feeling good</div>
       <button class="close-btn">&times;</button>
     </div>
     <div class="footnote-content">
-      <ul class="list-disc pl-6">
-        <li>Why get back to feeling good? <button data-footnote-link="why-get-back">See here</button></li>
-        <li>What if you are unable to get back to feeling good? <button data-footnote-link="unable-to-get-back">See here</button></li>
+      <ul class="footnote-list">
+        <li>Why get back to feeling good? <button class="footnote-link" data-footnote-link="why-get-back">See here</button></li>
+        <li>What if you are unable to get back to feeling good? <button class="footnote-link" data-footnote-link="unable-to-get-back">See here</button></li>
       </ul>
     </div>
   </div>
   <div class="footnote hidden" data-footnote="unable-to-get-back">
-    <div class="footnote-header flex items-center justify-between bg-blue-50 px-4 py-2 mb-4 border-b border-accent">
-      <div class="footnote-title font-bold w-full m-0 p-0">Unable to get back to feeling good?</div>
+    <div class="footnote-header">
+      <div class="footnote-title">Unable to get back to feeling good?</div>
       <button class="close-btn">&times;</button>
     </div>
     <div class="footnote-content">
@@ -153,7 +176,7 @@
           being what you indubitably are (a sensate creature) whilst you are here on this planet?</p>
         <p>If so, is it not silly to waste this only moment you are ever alive by feeling bad ... when you could be
           feeling good?</p>
-        <div class="pt-2 text-xs text-gray-500">Source: <a
+        <div class="footnote-source">Source: <a
             href="https://www.actualfreedom.com.au/richard/selectedcorrespondence/sc-sense.htm"
             class="text-accent underline hover:text-primary" target="_blank" rel="noopener">actualfreedom.com.au</a></div>
       </div>
@@ -161,8 +184,8 @@
 
   </div>
   <div class="footnote hidden" data-footnote="why-get-back">
-    <div class="footnote-header flex items-center justify-between bg-blue-50 px-4 py-2 mb-4 border-b border-accent">
-      <div class="footnote-title font-bold w-full m-0 p-0">Why get back to feeling good?</div>
+    <div class="footnote-header">
+      <div class="footnote-title">Why get back to feeling good?</div>
       <button class="close-btn">&times;</button>
     </div>
     <div class="footnote-content">
@@ -171,13 +194,13 @@
         <p><strong>[Richard]:</strong> What the identity inhabiting this flesh and blood body all those years ago would do is first get back to feeling good and then, and only then, suss out where, when, how, why – and what for – feeling bad happened as experience had shown ‘him’ that <mark>it was counter-productive to do otherwise</mark>.</p>
         <p>What ‘he’ always did however, as it was often tempting to just get on with life then, was to examine what it was all about within half-an-hour of getting back to feeling good (while the memory was still fresh) even if it meant sometimes falling back into feeling bad by doing so … else it would crop up again sooner or later.</p>
         <p>Nothing, but nothing, can be swept under the carpet.</p>
-        <div class="pt-2 text-xs text-gray-500">Source: <a href="http://www.actualfreedom.com.au/richard/articles/thismomentofbeingalive.htm" class="text-accent underline hover:text-primary" target="_blank" rel="noopener">thismomentofbeingalive.htm</a></div>
+        <div class="footnote-source">Source: <a href="http://www.actualfreedom.com.au/richard/articles/thismomentofbeingalive.htm" class="text-accent underline hover:text-primary" target="_blank" rel="noopener">thismomentofbeingalive.htm</a></div>
       </div>
     </div>
   </div>
   <div class="footnote hidden" data-footnote="suss-out">
-    <div class="footnote-header flex items-center justify-between bg-blue-50 px-4 py-2 mb-4 border-b border-accent">
-      <div class="footnote-title font-bold w-full m-0 p-0">Suss out</div>
+    <div class="footnote-header">
+      <div class="footnote-title">Suss out</div>
       <button class="close-btn">&times;</button>
     </div>
     <div class="footnote-content">
@@ -185,7 +208,7 @@
         <strong>[Richard]:</strong> What the identity inhabiting this flesh and blood body all those years ago would do is first get back to feeling good and then, and only then, suss out where, when, how, why – and what for – feeling bad happened as experience had shown ‘him’ that it was counter-productive to do otherwise.
         <p>What ‘he’ always did however, as <mark>it was often tempting to just get on with life</mark> then, was to examine what it was all about within half-an-hour of getting back to feeling good (<mark>while the memory was still fresh</mark>) even if it meant sometimes falling back into feeling bad by doing so … <mark>else it would crop up again sooner or later</mark>.</p>
         <p>Nothing, but nothing, can be swept under the carpet.</p>
-        <div class="pt-2 text-xs text-gray-500">Source: <a href="http://www.actualfreedom.com.au/richard/articles/thismomentofbeingalive.htm" class="text-accent underline hover:text-primary" target="_blank" rel="noopener">thismomentofbeingalive.htm</a></div>
+        <div class="footnote-source">Source: <a href="http://www.actualfreedom.com.au/richard/articles/thismomentofbeingalive.htm" class="text-accent underline hover:text-primary" target="_blank" rel="noopener">thismomentofbeingalive.htm</a></div>
       </div>
     </div>
   </div>
