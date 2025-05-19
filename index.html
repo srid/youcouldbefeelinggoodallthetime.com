@@ -103,8 +103,8 @@
     <button class="close-btn">&times;</button>
     <div class="footnote-content">
       <ul class="list-disc pl-6">
-        <li>What if you are unable to get back to feeling good? <button data-footnote-link="unable-to-get-back">See here</button></li>
         <li>Why get back to feeling good? <button data-footnote-link="why-get-back">See here</button></li>
+        <li>What if you are unable to get back to feeling good? <button data-footnote-link="unable-to-get-back">See here</button></li>
       </ul>
     </div>
   </div>
@@ -140,8 +140,13 @@
     <button class="close-btn">&times;</button>
     <div class="footnote-content">
       <div><strong>Why get back to feeling good?</strong></div>
-      <div>Feeling good is a prerequisite for clear perception, effective action, and enjoying life. When you are feeling good, you are more likely to respond wisely to situations, rather than react out of habit or emotion. This is not about ignoring problems, but about approaching them from a place of well-being.</div>
-      <div class="pt-2 text-xs text-gray-500">See also: <a href="http://www.actualfreedom.com.au/richard/selectedcorrespondence/sc-intelligence.htm" class="text-accent underline hover:text-primary" target="_blank" rel="noopener">actualfreedom.com.au</a></div>
+      <div>Because it is counter-productive to do anything whilst feeling bad. You are likely to go around in circles!</div>
+      <blockquote class="border-l-4 border-accent pl-4 my-4 text-sm text-dark">
+        <strong>[Richard]:</strong> What the identity inhabiting this flesh and blood body all those years ago would do is first get back to feeling good and then, and only then, suss out where, when, how, why – and what for – feeling bad happened as experience had shown ‘him’ that <mark>it was counter-productive to do otherwise</mark>.<br><br>
+        What ‘he’ always did however, as it was often tempting to just get on with life then, was to examine what it was all about within half-an-hour of getting back to feeling good (while the memory was still fresh) even if it meant sometimes falling back into feeling bad by doing so … else it would crop up again sooner or later.<br><br>
+        Nothing, but nothing, can be swept under the carpet.
+      </blockquote>
+      <div class="pt-2 text-xs text-gray-500">Source: <a href="http://www.actualfreedom.com.au/richard/articles/thismomentofbeingalive.htm" class="text-accent underline hover:text-primary" target="_blank" rel="noopener">thismomentofbeingalive.htm</a></div>
     </div>
   </div>
   <div class="footnote hidden" data-footnote="suss-out">
@@ -212,7 +217,14 @@
 
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') {
-        footnotes.forEach(({ id }) => hideFootnotePanel(id));
+        // Close only the topmost (last opened and visible) footnote
+        const openPanels = Array.from(document.querySelectorAll('.footnote:not(.hidden)'));
+        if (openPanels.length > 0) {
+          // The last in DOM order is the topmost
+          const topmost = openPanels[openPanels.length - 1];
+          const id = topmost.getAttribute('data-footnote');
+          if (id) hideFootnotePanel(id);
+        }
       }
     });
   </script>
