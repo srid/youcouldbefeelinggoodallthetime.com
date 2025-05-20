@@ -2,6 +2,18 @@
 
 https://youcouldbefeelinggoodallthetime.com/
 
+## Running 
+
+```sh
+npm run dev
+```
+
+## Building static site
+
+```sh
+npm run build
+```
+
 ## Tasks
 
 Refactor LLM generated code:
